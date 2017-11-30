@@ -75,8 +75,6 @@ function findMax(furthest: number, taxiDistance: number) {
 }
 
 function taxiDistance(marker1, marker2 = {x: 0, y: 0}): number {
-    const distanceX = (marker1.x > marker2.x) ? Math.abs(marker1.x - marker2.x) : Math.abs(marker2.x - marker1.x);
-    const distanceY = (marker1.y > marker2.y) ? Math.abs(marker1.y - marker2.y) : Math.abs(marker2.y - marker1.y);
-    return distanceX + distanceY;
+    return Math.abs(marker1.x - marker2.x) + Math.abs(marker1.y - marker2.y);
 }
 
