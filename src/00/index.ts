@@ -1,3 +1,4 @@
+console.time('Total time');
 import {input} from './input';
 
 interface IMarker {
@@ -21,10 +22,6 @@ const {a: markersA, b: markersB}: IMarkers = inputArray.reduce(reduceToMarkerArr
 const distanceA = markersA.map((marker) => taxiDistance(marker)).reduce(findMax, 0);
 const distanceB = markersB.map((marker) => taxiDistance(marker)).reduce(findMax, 0);
 
-console.log(`'A' markers: ${markersA.length}`);
-console.log(`'B' markers: ${markersB.length}`);
-console.log('Answer 1: ' + Math.max(distanceA, distanceB));
-
 // Calculate distance between all possible pairs and find the max value
 const longestDistance = markersA
     .map((marker1) => {
@@ -33,9 +30,12 @@ const longestDistance = markersA
         }).reduce(findMax, 0);
     }).reduce(findMax, 0);
 
-console.log(' ');
+console.log(`'A' markers: ${markersA.length}`);
+console.log(`'B' markers: ${markersB.length}`);
 console.log(`Tested ${markersA.length * markersB.length} combinations!`);
+console.log('Answer 1: ' + Math.max(distanceA, distanceB));
 console.log('Answer 2: ' + longestDistance);
+console.timeEnd('Total time');
 
 // --------------------------------
 
