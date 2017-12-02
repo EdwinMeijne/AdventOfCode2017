@@ -6,14 +6,6 @@ In the run up to advent, the elves are playing on their video game console. Befo
 The sequence involves the buttons 'Up', 'Down', 'Left', 'Right', 'A', 'B', and terminates with a single press of the 'Start' button.
 
 The elves begin to ponder the significance of the sequence they discovered, and decide to draw a chart.
-Advent Warmup: Elvish Cheat Codes
----------------------------------
-
-In the run up to advent, the elves are playing on their video game console. Before long, one of the elves manages to discover a cheat mode, by entering a sequence of button presses on the controller.
-
-The sequence involves the buttons 'Up', 'Down', 'Left', 'Right', 'A', 'B', and terminates with a single press of the 'Start' button.
-
-The elves begin to ponder the significance of the sequence they discovered, and decide to draw a chart.
 
 Starting at the origin in an (x,y) grid, the buttons Up, Down, Left, Right are imagined to move a cursor a single step in the corresponding direction through the grid. Buttons A and B place corresponding markers at the current cursor location.
 

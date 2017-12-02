@@ -6,6 +6,7 @@
   "scripts": {
     "assignment_00": "ts-node src/00/index.ts",
     "assignment_01": "ts-node src/01/index.ts",
+    "assignment_02": "ts-node src/02/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
