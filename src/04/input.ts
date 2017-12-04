@@ -1,5 +1,4 @@
-export const input = `
-kvvfl kvvfl olud wjqsqa olud frc
+export const input = `kvvfl kvvfl olud wjqsqa olud frc
 slhm rdfm yxb rsobyt rdfm
 pib wzfr xyoakcu zoapeze rtdxt rikc jyeps wdyo hawr xyoakcu hawr
 ismtq qwoi kzt ktgzoc gnxblp dzfayil ftfx asscba ionxi dzfayil qwoi
@@ -510,5 +509,4 @@ mldgn jxovw yuawcvz kzgzwht rxqhzev fsdnvu vluuo eycoh cugf qjugo
 tlnd qcxj ker fdir cgkpo nrqhyq raef uqadf iahy rxx
 mhvisju lhmdbs tcxied xeidtc ujry cditex gvqpqm
 cgc jazrp crgnna uvuokl uvuokl uoiwl sknmc sknmc
-rvbu czwpdit vmlihg spz lfaxxev zslfuto oog dvoksub
-`;
+rvbu czwpdit vmlihg spz lfaxxev zslfuto oog dvoksub`;
