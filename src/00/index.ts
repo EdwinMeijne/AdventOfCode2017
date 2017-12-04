@@ -1,7 +1,7 @@
 console.time('Total time');
 import {input} from './input';
 
-interface IMarker {
+export interface IMarker {
     x: number,
     y: number
 }
