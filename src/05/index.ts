@@ -17,7 +17,7 @@ function breakout(jumpArr: number[]) {
     do {
         steps++;
         index += jumpArr[index]++;
-    } while(jumpArr.length > index);
+    } while(jumpArr.length > index || index < 0);
 
     return steps;
 }
