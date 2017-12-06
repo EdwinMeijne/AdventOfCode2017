@@ -17,9 +17,10 @@ function distCycles(...bank:number[]) {
 
     while(true) {
         const largestIndex = bank.indexOf(Math.max(...bank));
+        const largest = bank[largestIndex];
 
         bank[largestIndex] = 0;
-        for(let i = 1; i <= bank[largestIndex]; i++) {
+        for(let i = 1; i <= largest; i++) {
             bank[(largestIndex + i) % bank.length]++;
         }
 
