@@ -4,9 +4,9 @@ import {input} from './input';
 
 const rows: number[][] = input.split('\n').map(row => row.split('\t').map(item => parseInt(item)));
 
-// const checksum1 = rows
-//     .map(row => Math.max(...row)) - Math.min(..row))
-//     .reduce((total, item) => total + item);
+const checksum1 = rows
+    .map(row => Math.max(...row) - Math.min(...row))
+    .reduce((total, item) => total + item);
 
 const checksum2 = rows.map(row => {
     let division = 0;

@@ -8,7 +8,7 @@ console.log('Answer 2: ' + stressTest(memLoc));
 
 console.timeEnd('Total time');
 
-function taxiDistanceToInputMemory(input) {
+function taxiDistanceToInputMemory(input: number) {
     const memSize = calculateSize(input);
     const memPos = (memSize * memSize) - input;
 
@@ -17,7 +17,7 @@ function taxiDistanceToInputMemory(input) {
 
     const zeroPoint = {
         x: Math.ceil(memSize / 2),
-        y: Math.ceil(memSize / 2)
+        y: Math.ceil(memSize / 2),
     };
 
     const memPoint = {
