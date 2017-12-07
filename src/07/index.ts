@@ -1,8 +1,6 @@
-import {forEachComment} from 'tslint';
+import {input} from './input';
 
 console.time('Total time');
-
-import {input} from './input';
 
 const programsArr = input
     .split('\n')
@@ -12,9 +10,7 @@ const programsArr = input
         programArr.push({
             id,
             weight: parseInt(weight, 10),
-            combinedWeight: 0,
             childIds: children ? children.split(',').map((child) => child.trim()) : [],
-            children: {},
         });
         return programArr;
     }, []);
@@ -22,7 +18,6 @@ const programsArr = input
 interface IProgram {
     id: string;
     weight: number;
-    combinedWeight: number;
     childIds: string[];
 }
 
@@ -43,7 +38,7 @@ console.timeEnd('Total time');
 function findRootNode(...nodes: IProgram[]) {
     const childNodeIds = nodes.reduce((nodeAcc, node) => nodeAcc.concat(node.childIds), []);
     // we assume it will be found, otherwise will throw an error
-    return nodes.filter((node) => childNodeIds.indexOf(node.id) === -1)[0];
+    return nodes.filter((node) => childNodeIds.indexOf(node.id) === -1)[0].id;
 }
 
 function findWeightBalance(root, ...nodes: IProgram[]) {
