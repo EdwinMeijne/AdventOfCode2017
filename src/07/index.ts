@@ -2,57 +2,78 @@ import {input} from './input';
 
 console.time('Total time');
 
-const programsArr = input
-    .split('\n')
-    .reduce((programArr, program: string) => {
-        const [, id, weight, children] = program.match(/^([a-z]*) \((.*)\)(?: -> )?(.*)$/);
-
-        programArr.push({
-            id,
-            weight: parseInt(weight, 10),
-            childIds: children ? children.split(',').map((child) => child.trim()) : [],
-        });
-        return programArr;
-    }, []);
-
-interface IProgram {
-    id: string;
+interface ITreeNode {
     weight: number;
+    parent: string;
     childIds: string[];
 }
 
-const rootNode = findRootNode(...programsArr);
+const programTreeMap: Map<string, ITreeNode> = input
+    .split('\n')
+    .reduce((treeMap, program: string) => {
+        const [, id, weight, children] = program.match(/^([a-z]*) \((.*)\)(?: -> )?(.*)$/);
+        treeMap.set(id, {
+            weight: parseInt(weight, 10),
+            parent: '',
+            childIds: children ? children.split(',').map((child) => child.trim()) : [],
+        });
+        return treeMap;
+    }, new Map());
 
-console.log('Answer 1: ' + rootNode);
-console.log('Answer 2: ' + findWeightBalance(rootNode, ...programsArr));
+programTreeMap.forEach((node, id) => {
+    node.childIds.forEach((childId) => {
+        if (programTreeMap.has(childId)) {
+            programTreeMap.get(childId).parent = id;
+        }
+    });
+});
+
+console.log('Answer 1: ', getOrphans(programTreeMap));
+console.log('Answer 2: ', checkBalance(programTreeMap));
 
 console.timeEnd('Total time');
 
 // --------------------------------
 
-/**
- * The root node is the only node without a parent
- * @param {IProgram} nodes
- * @return {IProgram}
- */
-function findRootNode(...nodes: IProgram[]) {
-    const childNodeIds = nodes.reduce((nodeAcc, node) => nodeAcc.concat(node.childIds), []);
-    // we assume it will be found, otherwise will throw an error
-    return nodes.filter((node) => childNodeIds.indexOf(node.id) === -1)[0].id;
+function getOrphans(tree: Map<string, ITreeNode>) {
+    return [...tree.entries()].find(([id, node]) => node.parent === '');
 }
 
-function findWeightBalance(root, ...nodes: IProgram[]) {
-    const nodeToWeight = nodes.reduce((tree, node) => {
-        tree[node.id] = node.weight;
-        return tree;
-    }, {});
+/*
+loop through all top level children
+for each kid, check siblings
+check total weight
+see if in balance
+if yes, remove kids
+go back to begin
+ */
 
-    const nodeToChildren = nodes.reduce((tree, node) => {
-        tree[node.id] = [...node.childIds];
-        return tree;
-    }, {});
+function checkBalance(tree: Map<string, ITreeNode>) {
+    console.log('Balancing cycle: ----------');
+    const treeClone = new Map(tree);
 
-    console.log(nodeToChildren, nodeToWeight);
+    const checkMap = [...treeClone.entries()]
+        .filter(([, node]) => node.childIds.filter((childId) => treeClone.has(childId)).length === 0)
+        .reduce((parentMap, [id, node]) => {
+            if (! parentMap.has(node.parent)) {
+                parentMap.set(node.parent, []);
+            }
+            parentMap.get(node.parent).push(node);
 
+            treeClone.delete(id);
+            return parentMap;
+        }, new Map() as Map<string, ITreeNode[]>);
 
+    if (checkMap.size > 1) {
+        checkMap.forEach((lastChilds, id) => {
+            lastChilds.forEach((lastChild) => {
+                 
+            });
+        });
+
+        // console.log(treeClone);
+        checkBalance(treeClone);
+    } else {
+        return false;
+    }
 }
