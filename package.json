@@ -12,6 +12,7 @@
     "assignment_05": "ts-node src/05/index.ts",
     "assignment_06": "ts-node src/06/index.ts",
     "assignment_07": "ts-node src/07/index.ts",
+    "assignment_08": "ts-node src/08/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
